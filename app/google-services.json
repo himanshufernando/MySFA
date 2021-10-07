@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "469753033958",
+    "firebase_url": "https://sales-force-automation-78fe3.firebaseio.com",
+    "project_id": "sales-force-automation-78fe3",
+    "storage_bucket": "sales-force-automation-78fe3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:469753033958:android:9938e7b3b9bb9ebf0bb727",
+        "android_client_info": {
+          "package_name": "tkhub.project.sfa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "469753033958-slremo6s7lmir9cr52jh9n1fbjj1i13a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ7jHYKbLL41mg4df2oV0qprt6zn1wiNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "469753033958-slremo6s7lmir9cr52jh9n1fbjj1i13a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

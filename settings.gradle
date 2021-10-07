@@ -1,0 +1,3 @@
+include ':circulartimerview'
+include ':app'
+rootProject.name = "SFA"

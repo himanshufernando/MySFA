@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">SFA</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="fcm_message">FCM Message</string>
+
+
+    <string name="no_internet">No internet access or poor connection, please check your connection and retry !!</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="don_t_you_have_an_account_create">Don\'t you have an account? Create</string>
+    <string name="please_wait_we_are_verifying_your_login">Please wait…we are verifying your login</string>
+    <string name="customers">Customers</string>
+    <string name="invoice">Invoice</string>
+    <string name="returns">Returns</string>
+    <string name="district">District :</string>
+    <string name="town">Town :</string>
+    <string name="town_hint">Town</string>
+    <string name="status">Status :</string>
+    <string name="fax">Fax :</string>
+    <string name="owner_s">Owner\'s # :</string>
+    <string name="email">Email</string>
+    <string name="br">BR :</string>
+    <string name="owner_s_mame">Owner\'s Name</string>
+    <string name="reg_numbe">Reg. Number</string>
+    <string name="new_user">NEW USER</string>
+    <string name="save">Save</string>
+    <string name="ok">OK</string>
+    <string name="edit">Edit</string>
+    <string name="customer_name">Customer Name *</string>
+    <string name="customer_name_hint">Customer Name</string>
+    <string name="address">Address *</string>
+    <string name="address_hint">Address</string>
+    <string name="district_">District *</string>
+    <string name="area">Area *</string>
+    <string name="area_hint">Area</string>
+    <string name="town_">Town *</string>
+    <string name="route">Route *</string>
+    <string name="customer_status">Customer Status *</string>
+    <string name="contact_number">Contact Number *</string>
+    <string name="contact_number_hint">Contact Number</string>
+    <string name="phone_number_">Phone Number *</string>
+    <string name="br_number">BR Number</string>
+    <string name="owner_s_name">Owner\'s Name</string>
+    <string name="owner_s_contact_no">Owner\'s Contact No</string>
+    <string name="contact_no">Contact No</string>
+    <string name="reg_number">Reg. Number</string>
+    <string name="registration_number">Registration Number</string>
+    <string name="select_district">Select district</string>
+    <string name="select_route">Select route</string>
+    <string name="select_status">Select status</string>
+
+    <string name="save_customer_locally">Successfully save new customer in locally,it will be sent automatically to approval once your internet connection is stable !!</string>
+
+
+    <declare-styleable name="CircularTimerView">
+        <attr name="progressColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="progressBackgroundColor" format="color" />
+        <attr name="strokeWidthDimension" format="dimension" />
+        <attr name="backgroundWidth" format="float" />
+        <attr name="roundedCorners" format="boolean" />
+        <attr name="maxValue" format="float" />
+        <attr name="progressTextColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="progressText" format="string" />
+        <attr name="suffix" format="string" />
+        <attr name="prefix" format="string" />
+        <attr name="isClockwise" fomat="boolean" />
+        <attr name="startingPoint" fomat="enum">
+            <enum name="top" value="270" />
+            <enum name="bottom" value="90" />
+            <enum name="right" value="0" />
+            <enum name="left" value="180" />
+        </attr>
+    </declare-styleable>
+</resources>

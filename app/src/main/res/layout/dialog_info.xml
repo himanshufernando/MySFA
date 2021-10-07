@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:background="@drawable/bg_dialog"
+        android:layout_width="match_parent"
+        android:layout_margin="30dp"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:id="@+id/anim_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/anim_dialog_error"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="info_error.json"
+                app:lottie_loop="true" />
+
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/anim_dialog_success"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="info_success.json"
+                app:lottie_loop="true" />
+
+
+        </RelativeLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_dialog_message"
+            style="@style/app_txt_light_black_16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/anim_dialog"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            tools:text="Are you sure you want to change the password ?" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_dialog_positive"
+            style="@style/app_txt_normal_black_16"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/txt_dialog_message"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:paddingEnd="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/ok"
+            app:textAllCaps="true" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

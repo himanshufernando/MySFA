@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="customer"
+            type="tkhub.project.sfa.data.model.customers.Customer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:onClick="@{clickListener}"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAppWhite"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/im_user_profile"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_user"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_status"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/circle_shape_btn"
+                app:layout_constraintBottom_toBottomOf="@+id/im_user_profile"
+                app:layout_constraintStart_toStartOf="@+id/im_user_profile"
+                app:setCustomerApproveStatus="@{customer}">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_customer_name"
+                style="@style/app_txt_normal_black_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@{customer.customer_name}"
+                android:textColor="@color/colorAppBlack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.526"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/im_user_profile"
+                app:layout_constraintTop_toTopOf="@+id/im_user_profile"
+                tools:text="Customer Name lsdsdsds dsdkskd sidsodosdisoids ds" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_customer_address"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@{customer.customer_address}"
+                tools:text="Customer Name lsdsdsds dsdkskd sidsodosdisoids ds"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/im_user_profile"
+                app:layout_constraintTop_toBottomOf="@+id/txt_customer_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_customer_number"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@{customer.customer_contact_number}"
+                tools:text="Customer Name lsdsdsds dsdkskd sidsodosdisoids ds"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/im_user_profile"
+                app:layout_constraintTop_toBottomOf="@+id/txt_customer_address" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_customer_route"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="@{customer.customer_route}"
+                tools:text="Customer Name lsdsdsds dsdkskd sidsodosdisoids ds"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/im_user_profile"
+                app:layout_constraintTop_toBottomOf="@+id/txt_customer_number" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/cl_drop"
+                android:onClick="@{clickListener}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:src="@drawable/ic_baseline_arrow_drop_down_circle_24"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_customer_route"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:setCustomerMoreDetails="@{customer.customerIsExpand}"
+            android:background="@color/color_app_light_white"
+            app:layout_constraintTop_toBottomOf="@+id/cl_main">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_district"
+                style="@style/app_txt_normal_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:text="@string/district"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_district_value"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="5dp"
+                android:text="@{customer.customer_district}"
+                android:layout_marginRight="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_town"
+                style="@style/app_txt_normal_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/town"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_district_value" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_town_value"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="5dp"
+                android:text="@{customer.customer_town}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_district_value" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_status"
+                style="@style/app_txt_normal_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/status"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_town_value" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_status_value"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="5dp"
+                android:text="@{customer.customer_status}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_town_value" />
+
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_ownernumber"
+                style="@style/app_txt_normal_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/owner_s"
+                app:layout_constraintEnd_toStartOf="@+id/txt_ownernumber_value"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_ownernumber_value"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:text="@{customer.customer_owners_contact_number}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_email"
+                style="@style/app_txt_normal_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/email"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_status_value" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_email_value"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="10dp"
+                android:text="@{customer.customer_email}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_status_value" />
+
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_br"
+                style="@style/app_txt_normal_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/br"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_email_value" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_br_value"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="5dp"
+                android:text="@{customer.customer_br_number}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_email_value" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_owers_name"
+                style="@style/app_txt_normal_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/owner_s_mame"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_br_value" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_oname_value"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="5dp"
+                android:text="@{customer.customer_owners_name}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_br_value" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_regnumber"
+                style="@style/app_txt_normal_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/reg_numbe"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_oname_value" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txt_regnumber_value"
+                style="@style/app_txt_light_black_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="5dp"
+                android:text="@{customer.customer_reg_number}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_oname_value" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/cl_location"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_baseline_location_on_24"
+                android:onClick="@{clickListener}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_regnumber_value"/>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

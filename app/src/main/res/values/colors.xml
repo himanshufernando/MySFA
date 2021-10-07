@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFDA05</color>
+    <color name="colorPrimaryDark">#FCB72D</color>
+    <color name="colorAccent">#fb963d</color>
+
+
+    <color name="colorAppWhite">#ffffff</color>
+
+
+    <color name="colorAppBlack">#000000</color>
+
+
+    <color name="colorTextBlack1">#000000</color>
+    <color name="colorTextBlack2">#323232</color>
+    <color name="colorTextBlack3">#666666</color>
+
+    <color name="colorYellowLight">#FFDA05</color>
+    <color name="colorYellowDark">#FCB72D</color>
+    <color name="colorYellow">#FDC619</color>
+    <color name="edittext_background">#00000000</color>
+    <color name="underline_color">#4D707070</color>
+    <color name="app_transparent">#00000000</color>
+    <color name="colorBgDialog">#CC212121</color>
+
+    <color name="colorGreenLight">#66d4be</color>
+    <color name="colorGreenDark">#00b894</color>
+
+    <color name="colorRedLight">#e37172</color>
+    <color name="colorRedDark">#d63031</color>
+
+    <color name="color_progress_background">#F2212121</color>
+
+    <color name="color_app_light_white">#f9f9f9</color>
+
+
+
+</resources>

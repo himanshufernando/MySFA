@@ -1,0 +1,854 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="customer"
+            type="tkhub.project.sfa.data.model.customers.Customer" />
+
+        <variable
+            name="customer_edit_view_model"
+            type="tkhub.project.sfa.viewmodels.customer.CustomerViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragment.customer.customers.CustomersFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_menu_bar"
+            android:layout_width="match_parent"
+            android:background="@drawable/gradient_bg"
+            android:layout_height="80dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txt_menu_name"
+                    style="@style/app_txt_normal_white_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="@{customer.customer_name}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/cl_navigation_customers"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_navigation_customers"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintLeft_toLeftOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/ic_nav_back"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="1" />
+
+
+        <ScrollView
+            android:id="@+id/cl_scrollview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/cl_menu_bar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_edit_customer_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.mikhaellopez.circularimageview.CircularImageView
+                            android:id="@+id/img_edit_customer_profile"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/ic_user"
+                            app:civ_border_color="@color/colorPrimary"
+                            app:civ_border_width="2dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_profile_edit_propic"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_customer_name"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/customer_name"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cl_edit_customer_image" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edt_customer_name"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edittext_background"
+                        android:ems="10"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/customer_name_hint"
+                        android:inputType="textPersonName"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_customer_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txt_customer_name"
+                        app:layout_constraintTop_toTopOf="@+id/txt_customer_name" />
+
+                    <View
+                        android:id="@+id/view_underline_customer_name"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/edt_customer_name"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_customer_name"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_customer_name" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_address"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/address"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_customer_name"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_customer_name" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edt_address"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edittext_background"
+                        android:ems="10"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/address_hint"
+                        android:inputType="textMultiLine"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_address"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_customer_name"
+                        app:layout_constraintTop_toTopOf="@+id/txt_address" />
+
+
+                    <View
+                        android:id="@+id/view_underline_address"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/edt_address"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_address"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_address" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_district"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/district_"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_customer_name"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_address" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_district"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_district"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_address"
+                        app:layout_constraintTop_toTopOf="@+id/txt_district">
+
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt_selected_district"
+                            style="@style/app_txt_light_black_14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/select_district"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_district"
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:rotation="90"
+                            android:src="@mipmap/ic_arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:id="@+id/view_underline_district"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/cl_district"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/cl_district"
+                        app:layout_constraintTop_toBottomOf="@+id/cl_district" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_area"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/area"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_customer_name"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_district" />
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/edt_area"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edittext_background"
+                        android:ems="10"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/area_hint"
+                        android:inputType="textPersonName"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_area"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/cl_district"
+                        app:layout_constraintTop_toTopOf="@+id/txt_area" />
+
+                    <View
+                        android:id="@+id/view_underline_area"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/edt_area"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_area"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_area" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_town"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/town_"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_customer_name"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_area" />
+
+
+                    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                        android:id="@+id/edt_town"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edittext_background"
+                        android:ems="10"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/town"
+                        android:inputType="textPersonName"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_town"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_area"
+                        app:layout_constraintTop_toTopOf="@+id/txt_town" />
+
+                    <View
+                        android:id="@+id/view_underline_town"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/edt_town"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_town"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_town" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_route"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/route"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_town"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_town" />
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_routs"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_route"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_town"
+                        app:layout_constraintTop_toTopOf="@+id/txt_route">
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt_selected_routs"
+                            style="@style/app_txt_light_black_14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/select_route"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/img_route"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_route"
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:rotation="90"
+                            android:src="@mipmap/ic_arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+                    <View
+                        android:id="@+id/view_underline_route"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/cl_routs"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/cl_routs"
+                        app:layout_constraintTop_toBottomOf="@+id/cl_routs" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_customer_status"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/customer_status"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_route"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_route" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_customer_status"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_customer_status"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/cl_routs"
+                        app:layout_constraintTop_toTopOf="@+id/txt_customer_status">
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt_selected_customer_status"
+                            style="@style/app_txt_light_black_14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/select_status"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/img_customer_status"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/img_customer_status"
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:rotation="90"
+                            android:src="@mipmap/ic_arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <View
+                        android:id="@+id/view_underline_customer_status"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/cl_customer_status"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/cl_customer_status"
+                        app:layout_constraintTop_toBottomOf="@+id/cl_customer_status" />
+
+
+
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_contact_number"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/contact_number"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_customer_status"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_customer_status" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edt_contact_number"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edittext_background"
+                        android:ems="10"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/contact_number_hint"
+                        android:inputType="phone"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_contact_number"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/cl_customer_status"
+                        app:layout_constraintTop_toTopOf="@+id/txt_contact_number" />
+
+
+                    <View
+                        android:id="@+id/view_underline_contact_number"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/edt_contact_number"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_contact_number"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_contact_number" />
+
+
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_email"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/email"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_contact_number"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_contact_number" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edt_email"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edittext_background"
+                        android:ems="10"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_email"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_contact_number"
+                        app:layout_constraintTop_toTopOf="@+id/txt_email" />
+
+
+                    <View
+                        android:id="@+id/view_underline_email"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/edt_email"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_email"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_br"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/br_number"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_email"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_email" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edt_br"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edittext_background"
+                        android:ems="10"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/br_number"
+                        android:inputType="textEmailAddress"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_br"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_email"
+                        app:layout_constraintTop_toTopOf="@+id/txt_br" />
+
+
+
+                    <View
+                        android:id="@+id/view_underline_br"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/edt_br"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_br"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_br" />
+
+
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_owner_name"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/owner_s_name"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_br"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_br" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edt_owner_name"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edittext_background"
+                        android:ems="10"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/owner_s_mame"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/colorAppBlack"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_owner_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_br"
+                        app:layout_constraintTop_toTopOf="@+id/txt_owner_name" />
+
+
+
+                    <View
+                        android:id="@+id/view_underline_owner_name"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/edt_owner_name"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_owner_name"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_owner_name" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_owner_number"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/owner_s_contact_no"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_owner_name"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_owner_name" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edt_owner_number"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edittext_background"
+                        android:ems="10"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/contact_no"
+                        android:inputType="phone"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_owner_number"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_owner_name"
+                        app:layout_constraintTop_toTopOf="@+id/txt_owner_number" />
+
+
+
+                    <View
+                        android:id="@+id/view_underline_owner_number"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/edt_owner_number"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_owner_number"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_owner_number" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_reg_number"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="@string/reg_number"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/txt_owner_number"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_owner_number" />
+
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/edt_reg_number"
+                        style="@style/app_txt_light_black_14"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edittext_background"
+                        android:ems="10"
+                        android:gravity="right|center_vertical"
+                        android:hint="@string/registration_number"
+                        android:inputType="text"
+                        app:layout_constraintBottom_toBottomOf="@+id/txt_reg_number"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_owner_number"
+                        app:layout_constraintTop_toTopOf="@+id/txt_reg_number" />
+
+
+
+                    <View
+                        android:id="@+id/view_underline_reg_number"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/underline_color"
+                        app:layout_constraintEnd_toEndOf="@+id/edt_reg_number"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/edt_reg_number"
+                        app:layout_constraintTop_toBottomOf="@+id/edt_reg_number" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_user_edit"
+                        style="@style/app_txt_normal_white_16"
+                        android:layout_width="150dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@drawable/button_yellow_gradient_bg"
+                        android:gravity="center"
+                        android:text="@string/edit"
+                        app:layout_constraintBottom_toTopOf="@+id/cl_0005"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view_underline_reg_number"
+                        app:textAllCaps="true" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_district_list"
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:visibility="gone"
+                        tools:visibility="gone"
+                        android:background="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="@+id/cl_district"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/cl_district"
+                        app:layout_constraintTop_toBottomOf="@+id/cl_district">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView_districts"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layoutAnimation="@anim/layout_animation_fall_down"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_customer_status_list"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        tools:visibility="gone"
+                        android:background="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="@+id/cl_customer_status"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/cl_customer_status"
+                        app:layout_constraintTop_toBottomOf="@+id/cl_customer_status">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView_customer_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layoutAnimation="@anim/layout_animation_fall_down"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_customer_route_list"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        tools:visibility="gone"
+                        android:background="@color/colorPrimary"
+                        app:layout_constraintEnd_toEndOf="@+id/cl_routs"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/cl_routs"
+                        app:layout_constraintTop_toBottomOf="@+id/cl_routs">
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView_route"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layoutAnimation="@anim/layout_animation_fall_down"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_0005"
+                        android:layout_width="match_parent"
+                        android:layout_height="270dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent">
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
