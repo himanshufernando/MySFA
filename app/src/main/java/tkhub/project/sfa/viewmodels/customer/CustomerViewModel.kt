@@ -103,8 +103,7 @@ class CustomerViewModel(
 
     fun getCustomer() = liveData(Dispatchers.IO) {
         try {
-            var respond = custRepo.getCustomers()
-            emit(SfaViewModelResult.Success(respond))
+            emit(SfaViewModelResult.Success(custRepo.getCustomers()))
         } catch (exception: Exception) {
             emit(SfaViewModelResult.ExceptionError.ExError(exception))
         }
