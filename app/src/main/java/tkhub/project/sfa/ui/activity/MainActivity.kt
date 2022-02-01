@@ -56,12 +56,7 @@ class MainActivity : FragmentActivity() {
 
 
 
-        easyImage = EasyImage.Builder(this)
-            .setCopyImagesToPublicGalleryFolder(false)
-            .setFolderName("EasyImage sample")
-            .setChooserType(ChooserType.CAMERA_AND_GALLERY)
-            .allowMultiple(false)
-            .build()
+        ezyImageInt()
 
 
 
@@ -100,6 +95,15 @@ class MainActivity : FragmentActivity() {
 
     }
 
+    private fun ezyImageInt(){
+        easyImage = EasyImage.Builder(this)
+            .setCopyImagesToPublicGalleryFolder(false)
+            .setFolderName("EasyImage sample")
+            .setChooserType(ChooserType.CAMERA_AND_GALLERY)
+            .allowMultiple(false)
+            .build()
+
+    }
     override fun onResume() {
         super.onResume()
 
