@@ -170,8 +170,7 @@ class CustomerViewModel(
 
     fun getAllDistricts() = liveData(Dispatchers.IO) {
         try {
-            var respond = custRepo.getAllDistricts()
-            emit(SfaViewModelResult.Success(respond))
+            emit(SfaViewModelResult.Success(custRepo.getAllDistricts()))
         } catch (exception: Exception) {
             emit(SfaViewModelResult.ExceptionError.ExError(exception))
         }
